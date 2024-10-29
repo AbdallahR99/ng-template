@@ -2,6 +2,8 @@
 
 import { defineConfig } from 'vite';
 import analog from '@analogjs/platform';
+import angular from '@analogjs/vite-plugin-angular';
+import { resolve } from 'path';
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
@@ -10,8 +12,21 @@ export default defineConfig(({ mode }) => ({
   },
   resolve: {
     mainFields: ['module'],
+    alias: {
+      '@': resolve(__dirname, 'src'),
+      '@core': resolve(__dirname, 'src/app/core'),
+      '@pages': resolve(__dirname, 'src/app/pages'),
+      '@environments': resolve(__dirname, 'src/app/environments'),
+      '@app': resolve(__dirname, 'src/app'),
+      '@server': resolve(__dirname, 'src/server'),
+    },
   },
-  plugins: [analog()],
+  plugins: [
+    analog({}),
+    angular({
+      inlineStylesExtension: 'scss',
+    }),
+  ],
   test: {
     globals: true,
     environment: 'jsdom',
