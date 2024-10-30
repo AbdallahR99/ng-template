@@ -7,6 +7,13 @@ import { resolve } from 'path';
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
+  css: {
+    preprocessorOptions: {
+      scss: {
+        includePaths: ['public/styles'],
+      },
+    },
+  },
   build: {
     target: ['es2020'],
   },
@@ -19,6 +26,7 @@ export default defineConfig(({ mode }) => ({
       '@environments': resolve(__dirname, 'src/app/environments'),
       '@app': resolve(__dirname, 'src/app'),
       '@server': resolve(__dirname, 'src/server'),
+      '@public': resolve(__dirname, 'public'),
     },
   },
   plugins: [

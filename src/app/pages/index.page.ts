@@ -1,8 +1,10 @@
 import { Component, signal } from '@angular/core';
+import { SHARED_MODULES } from '@app/core/shared/modules/shared.module';
 
 @Component({
   selector: 'app-home',
   standalone: true,
+  imports: [SHARED_MODULES],
   template: `
     <div>
       <a href="https://analogjs.org/" target="_blank">
@@ -11,11 +13,14 @@ import { Component, signal } from '@angular/core';
     </div>
 
     <h2>Analog</h2>
+    <h5>{{ 'Hello' | translate }}</h5>
 
     <h3>The fullstack meta-framework for Angular!</h3>
 
     <div class="card">
-      <button type="button" (click)="increment()">Count {{ count() }}</button>
+      <button type="button" class="btn btn-primary" (click)="increment()">
+        Count {{ count() }}
+      </button>
     </div>
 
     <p class="read-the-docs">

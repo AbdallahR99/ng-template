@@ -21,6 +21,10 @@
       ],
       "@server/*": [
         "src/app/server/*"
+      ],
+
+      "@public/*": [
+        "public/*"
       ]
     },
     "outDir": "./dist/out-tsc",

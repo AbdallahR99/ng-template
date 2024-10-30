@@ -1,0 +1,153 @@
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '@angular/material' as mat;
+// Plus imports for other components in your app.
+@use 'colors.scss' as c;
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+:root {
+  .mat-success {
+    color: c.$success;
+  }
+  .mat-danger {
+    color: c.$danger;
+  }
+
+}
+
+
+$app-m3-colors: (
+  0: c.shade(c.$primary, 90%),
+  10: c.shade(c.$primary, 80%),
+  20: c.shade(c.$primary, 70%),
+  25: c.shade(c.$primary, 60%),
+  30: c.shade(c.$primary, 50%),
+  35: c.$primary,
+  40: c.tint(c.$primary, 10%),
+  50: c.tint(c.$primary, 20%),
+  60: c.tint(c.$primary, 30%),
+  70: c.tint(c.$primary, 40%),
+  80: c.tint(c.$primary, 50%),
+  90: c.tint(c.$primary, 60%),
+  95: c.tint(c.$primary, 70%),
+  98: c.tint(c.$primary, 80%),
+  99: c.tint(c.$primary, 90%),
+  100: c.tint(c.$primary, 100%),
+  secondary: (
+    0: c.shade(c.$secondary, 90%),
+    10: c.shade(c.$secondary, 80%),
+    20: c.shade(c.$secondary, 70%),
+    25: c.shade(c.$secondary, 60%),
+    30: c.shade(c.$secondary, 50%),
+    35: c.$secondary,
+    40: c.tint(c.$secondary, 10%),
+    50: c.tint(c.$secondary, 20%),
+    60: c.tint(c.$secondary, 30%),
+    70: c.tint(c.$secondary, 40%),
+    80: c.tint(c.$secondary, 50%),
+    90: c.tint(c.$secondary, 60%),
+    95: c.tint(c.$secondary, 70%),
+    98: c.tint(c.$secondary, 80%),
+    99: c.tint(c.$secondary, 90%),
+    100: c.tint(c.$secondary, 100%),
+  ),
+  neutral: (
+    0: #000000,
+    10: #1a1b1f,
+    20: #2f3033,
+    25: #3b3b3f,
+    30: #46464a,
+    35: #525256,
+    40: #5e5e62,
+    50: #77777a,
+    60: #919094,
+    70: #ababaf,
+    80: #c7c6ca,
+    90: #e3e2e6,
+    95: #f2f0f4,
+    98: #faf9fd,
+    99: #fdfbff,
+    100: #ffffff,
+    4: #0a0b0c,
+    6: #101013,
+    12: #1e1f23,
+    17: #292a2d,
+    22: #343438,
+    24: #39393d,
+    87: #dbdade,
+    92: #e9e8ec,
+    94: #efedf1,
+    96: #f5f3f7,
+  ),
+  neutral-variant: (
+    0: #000000,
+    10: #181c22,
+    20: #2d3038,
+    25: #383b43,
+    30: #44474e,
+    35: #4f525a,
+    40: #5b5e66,
+    50: #74777f,
+    60: #8e9099,
+    70: #a9abb4,
+    80: #c4c6d0,
+    90: #e0e2ec,
+    95: #eff0fa,
+    98: #f9f9ff,
+    99: #fdfbff,
+    100: #ffffff,
+  ),
+  error: (
+    0: c.shade(c.$danger, 90%),
+    10: c.shade(c.$danger, 80%),
+    20: c.shade(c.$danger, 70%),
+    25: c.shade(c.$danger, 60%),
+    30: c.shade(c.$danger, 50%),
+    35: c.$danger,
+    40: c.tint(c.$danger, 10%),
+    50: c.tint(c.$danger, 20%),
+    60: c.tint(c.$danger, 30%),
+    70: c.tint(c.$danger, 40%),
+    80: c.tint(c.$danger, 50%),
+    90: c.tint(c.$danger, 60%),
+    95: c.tint(c.$danger, 70%),
+    98: c.tint(c.$danger, 80%),
+    99: c.tint(c.$danger, 90%),
+    100: c.tint(c.$danger, 100%),
+  ),
+);
+
+// Define the theme object.
+$normal-template-theme: mat.define-theme((
+  color: (
+    theme-type: light,
+    primary: $app-m3-colors,
+    // tertiary: $custom-tertiary-palette,
+    tertiary: mat.$azure-palette,
+  ),
+  density: (
+    scale: 0,
+  )
+));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+:root {
+  @include mat.all-component-themes($normal-template-theme);
+}
+
+// Comment out the line below if you want to use the pre-defined typography utility classes.
+// For more information: https://material.angular.io/guide/typography#using-typography-styles-in-your-application.
+// @include mat.typography-hierarchy($normal-template-theme);
+
+// Comment out the line below if you want to use the deprecated `color` inputs.
+// @include mat.color-variants-backwards-compatibility($normal-template-theme);
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
