@@ -1,3 +1,5 @@
+// @use "sass:color";
+
 $primary: #2fb6b6;
 $secondary: #E87287;
 $success: #198754;
@@ -27,6 +29,15 @@ $transparent: transparent;
   --blue: #{$blue};
   --blue-grey: #{$blue-grey};
   --transparent: #{$transparent};
+  // --p:  #{color.channel($primary, "lightness", $space: oklch)} #{color.channel($primary, "saturation", $space: hsl)} #{color.channel($primary, "hue", $space: oklch)};
+  // --p: #{$primary};
+  // --s: #{$secondary};
+  // --su: #{$success};
+  // --er: #{$danger};
+  // --wa: #{$warning};
+  // --in: #{$info};
+  // --b1: #{$light};
+  // --nc: #{$border};
 }
 
 
@@ -36,4 +47,6 @@ $transparent: transparent;
 @function shade($color, $percentage) {
   @return mix(black, $color, $percentage);
 }
-
+@function convertToOklch($color) {
+  @return #{color.channel($primary, "lightness", $space: oklch)} #{color.channel($primary, "saturation", $space: hsl)} #{color.channel($primary, "hue", $space: oklch)};
+}
