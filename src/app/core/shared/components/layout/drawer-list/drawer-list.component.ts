@@ -8,8 +8,16 @@ import { injectRouter } from '@analogjs/router';
   selector: 'app-drawer-list',
   standalone: true,
   imports: [SHARED_MODULES, MatListModule],
+  styles: [
+    `
+      @use 'colors' as c;
+      :host {
+        --mat-list-active-indicator-color: #{c.tint(c.$primary, 90%)};
+      }
+    `,
+  ],
   template: `
-    <mat-nav-list>
+    <mat-nav-list class="h-screen !flex flex-col">
       @for (item of navItems; track item) {
         <a
           (click)="onToggleDrawer.emit()"
@@ -24,25 +32,30 @@ import { injectRouter } from '@analogjs/router';
           >
         </a>
       }
-
+      <span class="flex-auto"></span>
       <a
         (click)="onToggleDrawer.emit()"
-        mat-button
-        routerLink="{{ routes.LOGIN }}"
+        mat-list-item
+        [routerLink]="routes.LOGIN"
         routerLinkActive="active"
         [routerLinkActiveOptions]="{ exact: true }"
+        [activated]="currentRoute == routes.LOGIN"
       >
-        {{ 'Login' | translate }}
+        <matListItemTitle [routerLink]="routes.LOGIN">
+          {{ 'Login' | translate }}
+        </matListItemTitle>
       </a>
-
       <a
         (click)="onToggleDrawer.emit()"
-        mat-button
-        routerLink="{{ routes.REGISTER }}"
+        mat-list-item
+        [routerLink]="routes.REGISTER"
         routerLinkActive="active"
         [routerLinkActiveOptions]="{ exact: true }"
+        [activated]="currentRoute == routes.REGISTER"
       >
-        {{ 'Register' | translate }}
+        <matListItemTitle [routerLink]="routes.REGISTER">
+          {{ 'Register' | translate }}
+        </matListItemTitle>
       </a>
     </mat-nav-list>
   `,
@@ -61,6 +74,10 @@ export class DrawerListComponent {
     {
       label: 'Home',
       link: APP_ROUTES.HOME,
+    },
+    {
+      label: 'Blog',
+      link: APP_ROUTES.BLOG,
     },
     {
       label: 'About',

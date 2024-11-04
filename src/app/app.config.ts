@@ -37,6 +37,7 @@ export const appConfig: ApplicationConfig = {
       withComponentInputBinding(),
       withNavigationErrorHandler(console.error),
     ),
+
     provideClientTranslatorModule(),
     provideAnimations(),
     provideClientHydration(withI18nSupport()),

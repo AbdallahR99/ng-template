@@ -17,6 +17,7 @@
         "build": {
           "builder": "@analogjs/platform:vite",
           "options": {
+            "inlineStyleLanguage": "scss",
             "configFile": "vite.config.ts",
             "main": "src/main.ts",
             "outputPath": "dist/client",
@@ -43,6 +44,8 @@
           "builder": "@analogjs/platform:vite-dev-server",
           "defaultConfiguration": "development",
           "options": {
+            "inlineStyleLanguage": "scss",
+
             "buildTarget": "ng-template:build",
             "port": 5173
           },

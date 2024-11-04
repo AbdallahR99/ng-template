@@ -10,5 +10,4 @@ export const SHARED_MODULES = [
   MATERIAL_COMMON_MODULE,
   CommonModule,
   RouterModule,
-  ElementRefDirective,
 ];

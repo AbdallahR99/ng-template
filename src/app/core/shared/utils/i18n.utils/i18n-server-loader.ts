@@ -20,7 +20,6 @@ export class TranslateServerLoader implements TranslateLoader {
 
   public getTranslation(lang: string): Observable<any> {
     return new Observable((observer) => {
-      debugger;
       if (this.platformService.isBrowser) return;
       const filePath = pathLocator(lang, this.prefix, this.suffix);
       // const filePath = join(

@@ -17,8 +17,8 @@ export enum APP_ROUTES {
   PROFILE_CHANGE_PASSWORD = '/profile/change-password',
 
   // blog
-  BLOGS = '/blogs',
-  BLOG_DETAIL = `/blogs/:id`,
+  BLOG = '/blog',
+  BLOG_DETAIL = `/blog/:id`,
 
   // common
   ABOUT = '/about',
